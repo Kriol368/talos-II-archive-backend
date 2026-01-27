@@ -16,4 +16,24 @@ class WeaponService(
     fun getWeaponById(id: Long): Weapon? {
         return weaponRepository.findById(id).orElse(null)
     }
+
+    fun getWeaponsByType(weaponTypeId: Long): List<Weapon> {
+        return weaponRepository.findByWeaponTypeId(weaponTypeId)
+    }
+
+    fun getWeaponsByRarity(rarityId: Long): List<Weapon> {
+        return weaponRepository.findByRarityId(rarityId)
+    }
+
+    fun searchWeaponsByName(name: String): List<Weapon> {
+        return weaponRepository.findByNameContainingIgnoreCase(name)
+    }
+
+    fun saveWeapon(weapon: Weapon): Weapon {
+        return weaponRepository.save(weapon)
+    }
+
+    fun deleteWeapon(id: Long) {
+        weaponRepository.deleteById(id)
+    }
 }

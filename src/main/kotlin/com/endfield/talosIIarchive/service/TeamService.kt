@@ -23,6 +23,10 @@ class TeamService(
         return teamRepository.findById(id).orElse(null)
     }
 
+    fun searchTeamsByName(name: String): List<Team> {
+        return teamRepository.findByTeamNameContainingIgnoreCase(name)
+    }
+
     fun getTeamOperators(teamId: Long): List<TeamOperator> {
         return teamOperatorRepository.findByTeamId(teamId)
     }
@@ -122,4 +126,8 @@ class TeamService(
         return bonuses
     }
 
+    @Transactional
+    fun deleteTeam(id: Long) {
+        teamRepository.deleteById(id)
+    }
 }

@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface BlueprintRepository : JpaRepository<Blueprint, Long> {
+    fun findByTitleContainingIgnoreCase(title: String): List<Blueprint>
+    fun findByCodeHash(codeHash: String): List<Blueprint>
     fun findAllByOrderByCreatedAtDesc(): List<Blueprint>
 }

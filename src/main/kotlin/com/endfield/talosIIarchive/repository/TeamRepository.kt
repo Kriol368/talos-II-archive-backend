@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface TeamRepository : JpaRepository<Team, Long> {
+    fun findByTeamNameContainingIgnoreCase(teamName: String): List<Team>
     fun findAllByOrderByCreatedAtDesc(): List<Team>
 }

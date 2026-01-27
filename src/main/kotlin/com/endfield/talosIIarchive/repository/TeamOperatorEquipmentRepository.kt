@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface TeamOperatorEquipmentRepository : JpaRepository<TeamOperatorEquipment, Long> {
     fun findByTeamId(teamId: Long): List<TeamOperatorEquipment>
+    fun findByTeamIdAndOperatorPosition(teamId: Long, operatorPosition: Int): TeamOperatorEquipment?
 }
