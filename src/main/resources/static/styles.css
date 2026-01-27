@@ -464,8 +464,17 @@ textarea.form-control-arknights {
 }
 
 .operator-image {
-    width: 60px;
-    height: 60px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--arknights-yellow);
+    box-shadow: 0 2px 8px rgba(255, 204, 0, 0.2);
+}
+
+.weapon-image {
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 8px;
     border: 2px solid var(--arknights-yellow);
