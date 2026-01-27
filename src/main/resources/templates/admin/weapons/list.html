@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weapons - Arknights Endfield Admin</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --arknights-dark: #0a0a0a;
+            --arknights-gray: #1a1a1a;
+            --arknights-light-gray: #2a2a2a;
+            --arknights-yellow: #ffcc00;
+            --arknights-yellow-dark: #e6b800;
+            --arknights-yellow-light: #ffe680;
+            --arknights-white: #f0f0f0;
+            --arknights-text: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--arknights-dark);
+            color: var(--arknights-text);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar-arknights {
+            background-color: var(--arknights-gray) !important;
+            border-bottom: 2px solid var(--arknights-yellow);
+        }
+
+        .navbar-brand-arknights {
+            color: var(--arknights-yellow) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .nav-link-arknights {
+            color: var(--arknights-text) !important;
+            padding: 8px 16px !important;
+        }
+
+        .nav-link-arknights:hover, .nav-link-arknights.active {
+            color: var(--arknights-yellow) !important;
+            background-color: rgba(255, 204, 0, 0.1);
+        }
+
+        .btn-arknights {
+            background-color: var(--arknights-yellow);
+            color: var(--arknights-dark);
+            border: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+
+        .btn-arknights:hover {
+            background-color: var(--arknights-yellow-dark);
+            color: var(--arknights-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 204, 0, 0.3);
+        }
+
+        .btn-arknights-outline {
+            background-color: transparent;
+            color: var(--arknights-yellow);
+            border: 2px solid var(--arknights-yellow);
+            border-radius: 6px;
+        }
+
+        .btn-arknights-outline:hover {
+            background-color: var(--arknights-yellow);
+            color: var(--arknights-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-icon:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-edit {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+        }
+
+        .btn-edit:hover {
+            background-color: #ffc107;
+            color: #000;
+            border-color: #ffc107;
+        }
+
+        .btn-delete {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+
+        .btn-delete:hover {
+            background-color: #dc3545;
+            color: #fff;
+            border-color: #dc3545;
+        }
+
+        .table-arknights {
+            background-color: var(--arknights-gray);
+            color: var(--arknights-text);
+            border-color: var(--arknights-light-gray);
+        }
+
+        .table-arknights th {
+            background-color: var(--arknights-light-gray);
+            color: var(--arknights-yellow);
+            border-color: var(--arknights-light-gray);
+            font-weight: 600;
+            padding: 15px 12px;
+        }
+
+        .table-arknights td {
+            border-color: var(--arknights-light-gray);
+            vertical-align: middle;
+            background-color: var(--arknights-gray);
+            padding: 12px;
+        }
+
+        .table-arknights tbody tr:hover {
+            background-color: var(--arknights-light-gray);
+        }
+
+        .badge-rarity {
+            font-weight: 600;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .badge-6star {
+            background: linear-gradient(135deg, #ff9900, #ff6600);
+            color: #000;
+            box-shadow: 0 2px 4px rgba(255, 102, 0, 0.3);
+        }
+
+        .badge-5star {
+            background: linear-gradient(135deg, #cc66ff, #9933cc);
+            color: #000;
+            box-shadow: 0 2px 4px rgba(153, 51, 204, 0.3);
+        }
+
+        .badge-4star {
+            background: linear-gradient(135deg, #66ccff, #3399ff);
+            color: #000;
+            box-shadow: 0 2px 4px rgba(51, 153, 255, 0.3);
+        }
+
+        .page-title {
+            color: var(--arknights-yellow);
+            border-bottom: 2px solid var(--arknights-yellow);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        .footer-arknights {
+            background-color: var(--arknights-gray);
+            color: var(--arknights-yellow-light);
+            border-top: 1px solid var(--arknights-yellow);
+            margin-top: auto;
+            padding: 20px 0;
+        }
+
+        .alert-success {
+            background-color: rgba(40, 167, 69, 0.1);
+            border-color: #28a745;
+            color: #28a745;
+        }
+
+        .alert-danger {
+            background-color: rgba(220, 53, 69, 0.1);
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .weapon-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--arknights-yellow);
+            box-shadow: 0 2px 8px rgba(255, 204, 0, 0.2);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--arknights-yellow-light);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--arknights-yellow);
+            opacity: 0.8;
+        }
+
+        .card-total {
+            background: linear-gradient(135deg, var(--arknights-gray), var(--arknights-light-gray));
+            border: 2px solid var(--arknights-yellow);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-total h3 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-total p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-arknights">
+    <div class="container">
+        <a class="navbar-brand navbar-brand-arknights" th:href="@{/endfield/admin}">
+            <i class="bi bi-controller me-2"></i>
+            TALOS-II ARCHIVE ADMIN
+        </a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link nav-link-arknights" th:href="@{/endfield/admin}">
+                        <i class="bi bi-house-door me-1"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-arknights" th:href="@{/endfield/admin/operators}">
+                        <i class="bi bi-person-badge me-1"></i> Operators
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-arknights active" th:href="@{/endfield/admin/weapons}">
+                        <i class="bi bi-diamond me-1"></i> Weapons
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-arknights" th:href="@{/endfield/admin/gear}">
+                        <i class="bi bi-shield-check me-1"></i> Gear
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow-1">
+    <div class="container py-4">
+        <!-- Alerts -->
+        <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle me-2"></i>
+            <span th:text="${successMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" style="filter: invert(1);"></button>
+        </div>
+
+        <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            <span th:text="${errorMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" style="filter: invert(1);"></button>
+        </div>
+
+        <!-- Page Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="page-title">
+                <i class="bi bi-diamond me-2"></i>
+                Weapons Management
+            </h1>
+            <a th:href="@{/endfield/admin/weapons/create}" class="btn btn-arknights">
+                <i class="bi bi-plus-circle me-1"></i> Create New Weapon
+            </a>
+        </div>
+
+        <!-- Weapons Table -->
+        <div class="card" style="background-color: var(--arknights-gray); border-color: var(--arknights-light-gray); border-radius: 10px; overflow: hidden;">
+            <div class="card-body p-0">
+                <div th:if="${weapons.empty}" class="empty-state">
+                    <i class="bi bi-diamond"></i>
+                    <h4>No Weapons Found</h4>
+                    <p class="mb-4">Start by creating your first weapon.</p>
+                    <a th:href="@{/endfield/admin/weapons/create}" class="btn btn-arknights">
+                        <i class="bi bi-plus-circle me-1"></i> Create First Weapon
+                    </a>
+                </div>
+
+                <div th:unless="${weapons.empty}" class="table-responsive">
+                    <table class="table table-arknights table-hover mb-0">
+                        <thead>
+                        <tr>
+                            <th width="70">Image</th>
+                            <th>Name</th>
+                            <th>Rarity</th>
+                            <th>Type</th>
+                            <th width="110">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="weapon : ${weapons}">
+                            <td>
+                                <img th:if="${weapon.imageUrl}"
+                                     th:src="${weapon.imageUrl}"
+                                     class="weapon-image"
+                                     alt="Weapon Image">
+                                <div th:unless="${weapon.imageUrl}"
+                                     class="weapon-image d-flex align-items-center justify-content-center"
+                                     style="background-color: var(--arknights-light-gray);">
+                                    <i class="bi bi-diamond" style="color: var(--arknights-yellow); font-size: 1.5rem;"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <strong style="color: var(--arknights-yellow-light); font-size: 1.1rem;" th:text="${weapon.name}"></strong>
+                            </td>
+                            <td>
+                                <span th:class="'badge badge-rarity badge-' + ${weapon.rarity.stars} + 'star'"
+                                      th:text="${weapon.rarity.stars} + '★'">
+                                </span>
+                            </td>
+                            <td>
+                                <span style="color: var(--arknights-text);" th:text="${weapon.weaponType.name}"></span>
+                            </td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <a th:href="@{/endfield/admin/weapons/edit/{id}(id=${weapon.id})}"
+                                       class="btn btn-icon btn-edit"
+                                       title="Edit">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <form th:action="@{/endfield/admin/weapons/delete/{id}(id=${weapon.id})}"
+                                          method="post"
+                                          style="display: inline;"
+                                          onsubmit="return confirm('Delete this weapon? This action cannot be undone.');">
+                                        <button type="submit" class="btn btn-icon btn-delete" title="Delete">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Stats -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card-total">
+                    <h3 style="color: var(--arknights-yellow);" th:text="${weapons.size()}">0</h3>
+                    <p style="color: var(--arknights-yellow-light);">Total Weapons in Database</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer-arknights mt-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h6 style="color: var(--arknights-yellow);">
+                    <i class="bi bi-controller me-2"></i>Talos-II Archive Admin
+                </h6>
+                <p class="mb-0 small" style="color: var(--arknights-yellow-light);">Weapons Management Panel</p>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <p class="mb-0 small">
+                        <span class="badge" style="background-color: var(--arknights-yellow); color: var(--arknights-dark); padding: 5px 10px; border-radius: 20px;">
+                            v1.0
+                        </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    setTimeout(function() {
+        const alerts = document.querySelectorAll('.alert');
+        alerts.forEach(alert => {
+            const bsAlert = new bootstrap.Alert(alert);
+            bsAlert.close();
+        });
+    }, 5000);
+</script>
+</body>
+</html>
