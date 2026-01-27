@@ -38,10 +38,7 @@ class TeamController(
             val equipment = equipmentList.find { it.operatorPosition == position }
             if (equipment != null) {
                 val gearPieces = listOf(
-                    equipment.armorGear,
-                    equipment.glovesGear,
-                    equipment.kit1Gear,
-                    equipment.kit2Gear
+                    equipment.armorGear, equipment.glovesGear, equipment.kit1Gear, equipment.kit2Gear
                 )
                 val setCounts = gearPieces.groupingBy { it.gearSet }.eachCount()
                 val activeBonuses = setCounts.filter { it.value >= 3 }.keys.map { it.name }

@@ -3,12 +3,7 @@ package com.endfield.talosIIarchive.controller.dto
 import com.endfield.talosIIarchive.model.Weapon
 
 data class WeaponSummaryDTO(
-    val id: Long,
-    val name: String,
-    val rarity: String,
-    val imageUrl: String?,
-    val weaponType: String,
-    val baseAtk: Int
+    val id: Long, val name: String, val rarity: String, val imageUrl: String?, val weaponType: String, val baseAtk: Int
 )
 
 data class WeaponDetailDTO(

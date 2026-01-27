@@ -3,12 +3,7 @@ package com.endfield.talosIIarchive.controller.dto
 import com.endfield.talosIIarchive.model.Gear
 
 data class GearSummaryDTO(
-    val id: Long,
-    val name: String,
-    val imageUrl: String?,
-    val gearType: String,
-    val gearSet: String,
-    val def: Int
+    val id: Long, val name: String, val imageUrl: String?, val gearType: String, val gearSet: String, val def: Int
 )
 
 data class GearDetailDTO(

@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class TalosIIarchiveApplication
 
 fun main(args: Array<String>) {
-	runApplication<TalosIIarchiveApplication>(*args)
+    runApplication<TalosIIarchiveApplication>(*args)
 }

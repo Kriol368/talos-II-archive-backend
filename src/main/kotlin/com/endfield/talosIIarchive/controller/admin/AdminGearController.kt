@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*
 @Controller
 @RequestMapping("/endfield/admin/gear")
 class AdminGearController(
-    private val gearService: GearService,
-    private val referenceDataService: ReferenceDataService
+    private val gearService: GearService, private val referenceDataService: ReferenceDataService
 ) {
 
     @GetMapping
@@ -55,7 +54,6 @@ class AdminGearController(
     fun showEditForm(@PathVariable id: Long, model: Model): String {
         val gear = gearService.getGearById(id) ?: return "redirect:/endfield/admin/gear"
 
-        // Convertir Entity a FormDTO
         val gearForm = GearFormDTO(
             id = gear.id,
             name = gear.name,
@@ -76,8 +74,7 @@ class AdminGearController(
 
     @PostMapping("/edit/{id}")
     fun updateGear(
-        @PathVariable id: Long,
-        @ModelAttribute gearForm: GearFormDTO
+        @PathVariable id: Long, @ModelAttribute gearForm: GearFormDTO
     ): String {
         val existingGear = gearService.getGearById(id) ?: return "redirect:/endfield/admin/gear"
 

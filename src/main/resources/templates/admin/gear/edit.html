@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Edit Gear - Arknights Endfield Admin</title>
 
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="/styles.css"></head>
-
+    <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
-<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-arknights">
     <div class="container">
         <a class="navbar-brand navbar-brand-arknights" th:href="@{/endfield/admin}">
@@ -48,10 +46,8 @@
     </div>
 </nav>
 
-<!-- Main Content -->
 <main class="flex-grow-1">
     <div class="container py-4">
-        <!-- Alerts -->
         <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
             <i class="bi bi-check-circle me-2"></i>
             <span th:text="${successMessage}"></span>
@@ -64,7 +60,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" style="filter: invert(1);"></button>
         </div>
 
-        <!-- Page Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="page-title">
                 <i class="bi bi-shield-check me-2"></i>
@@ -75,10 +70,9 @@
             </a>
         </div>
 
-        <!-- Edit Form -->
-        <form th:action="@{/endfield/admin/gear/edit/{id}(id=${gearForm.id})}" th:object="${gearForm}" method="post" class="mb-4">
+        <form th:action="@{/endfield/admin/gear/edit/{id}(id=${gearForm.id})}" th:object="${gearForm}" method="post"
+              class="mb-4">
 
-            <!-- Basic Information -->
             <div class="form-section">
                 <h3 class="form-section-title">
                     <i class="bi bi-info-circle"></i> Basic Information
@@ -134,13 +128,11 @@
                 </div>
             </div>
 
-            <!-- Attributes Section -->
             <div class="form-section">
                 <h3 class="form-section-title">
                     <i class="bi bi-bar-chart"></i> Attributes
                 </h3>
 
-                <!-- Attribute 1 -->
                 <div class="attribute-input-group">
                     <div class="attribute-header">
                         <div class="attribute-number">1</div>
@@ -159,7 +151,6 @@
                     </div>
                 </div>
 
-                <!-- Attribute 2 -->
                 <div class="attribute-input-group">
                     <div class="attribute-header">
                         <div class="attribute-number">2</div>
@@ -178,7 +169,6 @@
                     </div>
                 </div>
 
-                <!-- Attribute 3 -->
                 <div class="attribute-input-group">
                     <div class="attribute-header">
                         <div class="attribute-number">3</div>
@@ -198,7 +188,6 @@
                 </div>
             </div>
 
-            <!-- Defense Section -->
             <div class="form-section">
                 <h3 class="form-section-title">
                     <i class="bi bi-shield"></i> Defense
@@ -218,7 +207,6 @@
                 </div>
             </div>
 
-            <!-- Form Actions -->
             <div class="d-flex justify-content-between mt-4">
                 <a th:href="@{/endfield/admin/gear}" class="btn btn-arknights-outline">
                     <i class="bi bi-arrow-left me-1"></i> Cancel
@@ -231,7 +219,6 @@
     </div>
 </main>
 
-<!-- Footer -->
 <footer class="footer-arknights mt-4">
     <div class="container">
         <div class="row">
@@ -243,7 +230,8 @@
             </div>
             <div class="col-md-4 text-md-end">
                 <p class="mb-0 small">
-                        <span class="badge" style="background-color: var(--arknights-yellow); color: var(--arknights-dark); padding: 5px 10px; border-radius: 20px;">
+                        <span class="badge"
+                              style="background-color: var(--arknights-yellow); color: var(--arknights-dark); padding: 5px 10px; border-radius: 20px;">
                             v1.0
                         </span>
                 </p>

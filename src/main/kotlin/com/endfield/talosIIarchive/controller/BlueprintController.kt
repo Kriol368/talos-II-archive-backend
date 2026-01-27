@@ -18,9 +18,7 @@ class BlueprintController(private val blueprintService: BlueprintService) {
     @PostMapping
     fun createBlueprint(@RequestBody request: CreateBlueprintRequestDTO): ResponseEntity<BlueprintSummaryDTO> {
         val blueprint = blueprintService.createBlueprint(
-            title = request.title,
-            description = request.description,
-            codeHash = request.codeHash
+            title = request.title, description = request.description, codeHash = request.codeHash
         )
         return ResponseEntity.status(HttpStatus.CREATED).body(blueprint.toSummaryDTO())
     }

@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gear - Arknights Endfield Admin</title>
 
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="/styles.css"></head>
+    <link rel="stylesheet" href="/styles.css">
 </head>
+
 <body>
-<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-arknights">
     <div class="container">
         <a class="navbar-brand navbar-brand-arknights" th:href="@{/endfield/admin}">
@@ -47,10 +46,8 @@
     </div>
 </nav>
 
-<!-- Main Content -->
 <main class="flex-grow-1">
     <div class="container py-4">
-        <!-- Alerts -->
         <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
             <i class="bi bi-check-circle me-2"></i>
             <span th:text="${successMessage}"></span>
@@ -63,7 +60,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" style="filter: invert(1);"></button>
         </div>
 
-        <!-- Page Header -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="page-title">
                 <i class="bi bi-shield-check me-2"></i>
@@ -74,8 +70,8 @@
             </a>
         </div>
 
-        <!-- Gear Table -->
-        <div class="card" style="background-color: var(--arknights-gray); border-color: var(--arknights-light-gray); border-radius: 10px; overflow: hidden;">
+        <div class="card"
+             style="background-color: var(--arknights-gray); border-color: var(--arknights-light-gray); border-radius: 10px; overflow: hidden;">
             <div class="card-body p-0">
                 <div th:if="${gearList.empty}" class="empty-state">
                     <i class="bi bi-shield-check"></i>
@@ -109,20 +105,26 @@
                                      class="gear-image d-flex align-items-center justify-content-center"
                                      style="background-color: var(--arknights-light-gray);">
                                     <!-- Icono según tipo de gear - MANERA CORREGIDA -->
-                                    <i th:if="${gear.gearType.name == 'Armor'}" class="bi bi-shield" style="color: var(--arknights-yellow); font-size: 1.5rem;"></i>
-                                    <i th:if="${gear.gearType.name == 'Gloves'}" class="bi bi-hand-index-thumb" style="color: var(--arknights-yellow); font-size: 1.5rem;"></i>
-                                    <i th:if="${gear.gearType.name == 'Kit'}" class="bi bi-briefcase" style="color: var(--arknights-yellow); font-size: 1.5rem;"></i>
+                                    <i th:if="${gear.gearType.name == 'Armor'}" class="bi bi-shield"
+                                       style="color: var(--arknights-yellow); font-size: 1.5rem;"></i>
+                                    <i th:if="${gear.gearType.name == 'Gloves'}" class="bi bi-hand-index-thumb"
+                                       style="color: var(--arknights-yellow); font-size: 1.5rem;"></i>
+                                    <i th:if="${gear.gearType.name == 'Kit'}" class="bi bi-briefcase"
+                                       style="color: var(--arknights-yellow); font-size: 1.5rem;"></i>
                                     <i th:if="${gear.gearType.name != 'Armor' and gear.gearType.name != 'Gloves' and gear.gearType.name != 'Kit'}"
-                                       class="bi bi-shield-check" style="color: var(--arknights-yellow); font-size: 1.5rem;"></i>
+                                       class="bi bi-shield-check"
+                                       style="color: var(--arknights-yellow); font-size: 1.5rem;"></i>
                                 </div>
                             </td>
                             <td>
-                                <strong style="color: var(--arknights-yellow-light); font-size: 1.1rem;" th:text="${gear.name}"></strong>
+                                <strong style="color: var(--arknights-yellow-light); font-size: 1.1rem;"
+                                        th:text="${gear.name}"></strong>
                             </td>
                             <td>
-                                <!-- Badge tipo de gear - MANERA CORREGIDA -->
-                                <span th:if="${gear.gearType.name == 'Armor'}" class="type-badge type-armor">Armor</span>
-                                <span th:if="${gear.gearType.name == 'Gloves'}" class="type-badge type-gloves">Gloves</span>
+                                <span th:if="${gear.gearType.name == 'Armor'}"
+                                      class="type-badge type-armor">Armor</span>
+                                <span th:if="${gear.gearType.name == 'Gloves'}"
+                                      class="type-badge type-gloves">Gloves</span>
                                 <span th:if="${gear.gearType.name == 'Kit'}" class="type-badge type-kit">Kit</span>
                                 <span th:if="${gear.gearType.name != 'Armor' and gear.gearType.name != 'Gloves' and gear.gearType.name != 'Kit'}"
                                       class="type-badge" style="background-color: var(--arknights-light-gray);">[[${gear.gearType.name}]]</span>
@@ -174,7 +176,6 @@
             </div>
         </div>
 
-        <!-- Total Stats -->
         <div class="row mt-4">
             <div class="col-12">
                 <div class="card-total">
@@ -186,7 +187,6 @@
     </div>
 </main>
 
-<!-- Footer -->
 <footer class="footer-arknights mt-4">
     <div class="container">
         <div class="row">
@@ -198,7 +198,8 @@
             </div>
             <div class="col-md-4 text-md-end">
                 <p class="mb-0 small">
-                        <span class="badge" style="background-color: var(--arknights-yellow); color: var(--arknights-dark); padding: 5px 10px; border-radius: 20px;">
+                        <span class="badge"
+                              style="background-color: var(--arknights-yellow); color: var(--arknights-dark); padding: 5px 10px; border-radius: 20px;">
                             v1.0
                         </span>
                 </p>
@@ -210,7 +211,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    setTimeout(function() {
+    setTimeout(function () {
         const alerts = document.querySelectorAll('.alert');
         alerts.forEach(alert => {
             const bsAlert = new bootstrap.Alert(alert);

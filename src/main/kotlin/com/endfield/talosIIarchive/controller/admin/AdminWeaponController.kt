@@ -2,8 +2,8 @@ package com.endfield.talosIIarchive.controller.admin
 
 import com.endfield.talosIIarchive.controller.admin.dto.WeaponFormDTO
 import com.endfield.talosIIarchive.model.Weapon
-import com.endfield.talosIIarchive.service.WeaponService
 import com.endfield.talosIIarchive.service.ReferenceDataService
+import com.endfield.talosIIarchive.service.WeaponService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*
 @Controller
 @RequestMapping("/endfield/admin/weapons")
 class AdminWeaponController(
-    private val weaponService: WeaponService,
-    private val referenceDataService: ReferenceDataService
+    private val weaponService: WeaponService, private val referenceDataService: ReferenceDataService
 ) {
 
     @GetMapping
@@ -55,7 +54,6 @@ class AdminWeaponController(
     fun showEditForm(@PathVariable id: Long, model: Model): String {
         val weapon = weaponService.getWeaponById(id) ?: return "redirect:/endfield/admin/weapons"
 
-        // Convertir Entity a FormDTO
         val weaponForm = WeaponFormDTO(
             id = weapon.id,
             name = weapon.name,
@@ -76,8 +74,7 @@ class AdminWeaponController(
 
     @PostMapping("/edit/{id}")
     fun updateWeapon(
-        @PathVariable id: Long,
-        @ModelAttribute weaponForm: WeaponFormDTO
+        @PathVariable id: Long, @ModelAttribute weaponForm: WeaponFormDTO
     ): String {
         val existingWeapon = weaponService.getWeaponById(id) ?: return "redirect:/endfield/admin/weapons"
 

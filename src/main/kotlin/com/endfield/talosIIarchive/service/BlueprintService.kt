@@ -27,9 +27,7 @@ class BlueprintService(
 
     fun createBlueprint(title: String, description: String?, codeHash: String): Blueprint {
         val blueprint = Blueprint(
-            title = title,
-            description = description,
-            codeHash = codeHash
+            title = title, description = description, codeHash = codeHash
         )
         return blueprintRepository.save(blueprint)
     }

@@ -1,10 +1,6 @@
 package com.endfield.talosIIarchive.controller.admin
 
-import com.endfield.talosIIarchive.service.OperatorService
-import com.endfield.talosIIarchive.service.WeaponService
-import com.endfield.talosIIarchive.service.GearService
-import com.endfield.talosIIarchive.service.TeamService
-import com.endfield.talosIIarchive.service.BlueprintService
+import com.endfield.talosIIarchive.service.*
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping

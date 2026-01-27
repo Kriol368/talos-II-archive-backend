@@ -4,17 +4,11 @@ import com.endfield.talosIIarchive.model.Blueprint
 import java.time.format.DateTimeFormatter
 
 data class BlueprintSummaryDTO(
-    val id: Long,
-    val title: String,
-    val description: String?,
-    val codeHash: String,
-    val createdAt: String
+    val id: Long, val title: String, val description: String?, val codeHash: String, val createdAt: String
 )
 
 data class CreateBlueprintRequestDTO(
-    val title: String,
-    val description: String? = null,
-    val codeHash: String
+    val title: String, val description: String? = null, val codeHash: String
 )
 
 private val dateFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME

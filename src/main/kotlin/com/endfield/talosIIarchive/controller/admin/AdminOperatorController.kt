@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*
 @Controller
 @RequestMapping("/endfield/admin/operators")
 class AdminOperatorController(
-    private val operatorService: OperatorService,
-    private val referenceDataService: ReferenceDataService
+    private val operatorService: OperatorService, private val referenceDataService: ReferenceDataService
 ) {
 
     @GetMapping
@@ -89,7 +88,6 @@ class AdminOperatorController(
     fun showEditForm(@PathVariable id: Long, model: Model): String {
         val operator = operatorService.getOperatorById(id) ?: return "redirect:/endfield/admin/operators"
 
-        // Convertir Entity a FormDTO
         val operatorForm = OperatorFormDTO(
             id = operator.id,
             name = operator.name,
@@ -142,8 +140,7 @@ class AdminOperatorController(
 
     @PostMapping("/edit/{id}")
     fun updateOperator(
-        @PathVariable id: Long,
-        @ModelAttribute operatorForm: OperatorFormDTO
+        @PathVariable id: Long, @ModelAttribute operatorForm: OperatorFormDTO
     ): String {
         val existingOperator = operatorService.getOperatorById(id) ?: return "redirect:/endfield/admin/operators"
 

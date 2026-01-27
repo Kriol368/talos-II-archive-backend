@@ -51,16 +51,13 @@ class TeamService(
         require(operatorIds.distinct().size == 4) { "Cannot have duplicate operators in a team" }
 
         val team = Team(
-            teamName = teamName,
-            description = description
+            teamName = teamName, description = description
         )
         val savedTeam = teamRepository.save(team)
 
         for ((index, operator) in operators.withIndex()) {
             val teamOperator = TeamOperator(
-                team = savedTeam,
-                operator = operator,
-                position = index
+                team = savedTeam, operator = operator, position = index
             )
             teamOperatorRepository.save(teamOperator)
         }
@@ -108,10 +105,7 @@ class TeamService(
         for (equipment in equipmentList) {
             val operatorPosition = equipment.operatorPosition
             val gearPieces = listOf(
-                equipment.armorGear,
-                equipment.glovesGear,
-                equipment.kit1Gear,
-                equipment.kit2Gear
+                equipment.armorGear, equipment.glovesGear, equipment.kit1Gear, equipment.kit2Gear
             )
 
             val setCounts = gearPieces.groupingBy { it.gearSet }.eachCount()

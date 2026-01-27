@@ -1,14 +1,10 @@
 package com.endfield.talosIIarchive.controller.dto
 
-import com.endfield.talosIIarchive.model.*
+import com.endfield.talosIIarchive.model.Team
 import java.time.format.DateTimeFormatter
 
 data class TeamSummaryDTO(
-    val id: Long,
-    val teamName: String,
-    val description: String?,
-    val createdAt: String,
-    val operatorNames: List<String>
+    val id: Long, val teamName: String, val description: String?, val createdAt: String, val operatorNames: List<String>
 )
 
 data class TeamOperatorEquipmentDTO(
@@ -52,8 +48,7 @@ fun Team.toSummaryDTO(operatorNames: List<String>) = TeamSummaryDTO(
 )
 
 fun Team.toDetailDTO(
-    operators: List<TeamOperatorEquipmentDTO>,
-    setBonuses: Map<Int, List<String>>
+    operators: List<TeamOperatorEquipmentDTO>, setBonuses: Map<Int, List<String>>
 ) = TeamDetailDTO(
     id = this.id,
     teamName = this.teamName,
