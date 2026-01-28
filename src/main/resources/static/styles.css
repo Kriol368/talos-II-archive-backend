@@ -338,6 +338,7 @@ textarea.form-control-arknights {
     border-radius: 8px;
     padding: 15px;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .stat-value {
@@ -388,6 +389,7 @@ textarea.form-control-arknights {
     border-color: var(--arknights-light-gray);
     font-weight: 600;
     padding: 15px 12px;
+    text-align: center;
 }
 
 .table-arknights td {
@@ -395,6 +397,7 @@ textarea.form-control-arknights {
     vertical-align: middle;
     background-color: var(--arknights-gray);
     padding: 12px;
+    text-align: center;
 }
 
 .table-arknights tbody tr:hover {
@@ -481,6 +484,14 @@ textarea.form-control-arknights {
     box-shadow: 0 2px 8px rgba(255, 204, 0, 0.2);
 }
 
+.gear-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--arknights-yellow);
+    box-shadow: 0 2px 8px rgba(255, 204, 0, 0.2);
+}
 .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -535,4 +546,21 @@ textarea.form-control-arknights {
 
 .border-yellow {
     border-color: var(--arknights-yellow) !important;
+}
+
+.nav-icon {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+.nav-link:hover .nav-icon {
+    opacity: 1;
+}
+
+.nav-link.active .nav-icon {
+    filter: brightness(0) saturate(100%) invert(83%) sepia(38%) saturate(683%) hue-rotate(1deg) brightness(103%) contrast(102%);
+    opacity: 1;
 }
