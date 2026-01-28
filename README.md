@@ -29,7 +29,6 @@ spring.datasource.password=tu_contraseña
 
 ### Acceso
 - Panel Admin: `http://localhost:8080/endfield/admin`
-- API REST: `http://localhost:8080/endfield/api/`
 
 ## 🗄️ Replicar Base de Datos
 
@@ -60,14 +59,16 @@ mysql -h nuevo_servidor -u usuario -p nueva_db < backup.sql
 ## 🎯 Endpoints API
 
 ### Consultas
-- `GET /api/operators` - Personajes
-- `GET /api/weapons` - Armas
-- `GET /api/gear` - Equipamiento
-- `GET /api/teams` - Equipos públicos
+- `GET /endfield/operators` - Personajes
+- `GET /endfield/weapons` - Armas
+- `GET /endfield/gear` - Equipamiento
+- `GET /endfield/teams` - Equipos 
+- `GET /endfield/blueprints` - Blueprints
+
 
 ### Creaciones
-- `POST /api/teams` - Crear equipo
-- `POST /api/blueprints` - Compartir configuración
+- `POST /endfield/teams` - Crear equipo
+- `POST /endfield/blueprints` - Crear blueprint
 
 ## ⚙️ Reglas de Validación
 - Equipos: 4 operadores únicos
