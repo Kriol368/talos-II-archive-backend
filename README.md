@@ -46,7 +46,7 @@ mysql -h nuevo_servidor -u usuario -p nueva_db < backup.sql
 3. Actualizar credenciales en `application.properties`
 
 ## 📊 Modelo Entidad-Relación
-![Modelo ER de la Base de Datos](database/ER_diagram.png)
+![Modelo ER de la Base de Datos](src/main/resources/static/images/database.png)
 
 **Relaciones principales:**
 - `team` → `team_operator` (1 a 4)
