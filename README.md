@@ -1,9 +1,9 @@
 # Talos-II Archive - Backend Spring Boot
 
-## 📋 Descripción
+## Descripción
 Backend para aplicación de Talos-II Archive con panel administrativo y API REST.
 
-## 🚀 Ejecutar la Aplicación
+## Ejecutar la Aplicación
 
 ### Requisitos
 - Java 17+
@@ -44,7 +44,7 @@ mysql -h nuevo_servidor -u usuario -p nueva_db < backup.sql
 
 3. Actualizar credenciales en `application.properties`
 
-## 📊 Modelo Entidad-Relación
+## Modelo Entidad-Relación
 ![Modelo ER de la Base de Datos](src/main/resources/static/images/database.png)
 
 **Relaciones principales:**
@@ -56,7 +56,7 @@ mysql -h nuevo_servidor -u usuario -p nueva_db < backup.sql
 **Tablas de referencia:**
 - `weapon_type`, `element`, `operator_class`, `rarity`, `gear_type`, `gear_set`
 
-## 🎯 Endpoints API
+## Endpoints API
 
 ### Consultas
 - `GET /endfield/operators` - Personajes
@@ -70,7 +70,7 @@ mysql -h nuevo_servidor -u usuario -p nueva_db < backup.sql
 - `POST /endfield/teams` - Crear equipo
 - `POST /endfield/blueprints` - Crear blueprint
 
-## ⚙️ Reglas de Validación
+## Reglas de Validación
 - Equipos: 4 operadores únicos
 - Por operador: 1 arma + 4 piezas de equipamiento (Armor, Gloves, 2 Kits)
 - Sets: 3+ piezas del mismo set activan bonificación
