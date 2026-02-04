@@ -14,11 +14,11 @@ Aplicación backend para Talos-II Archive, un sistema de gestión de contenido p
 ### Descripción de Tablas
 
 #### Tablas de Referencia
-- **weapon_type**: Tipos de armas disponibles (Sword, Bow, Staff, etc.)
-- **element**: Elementos de los operadores (Fire, Ice, Lightning, etc.)
-- **operator_class**: Clases de operadores (Vanguard, Guard, Defender, etc.)
-- **rarity**: Niveles de rareza (4★, 5★, 6★)
-- **gear_type**: Tipos de equipamiento (Armor, Gloves, Kit)
+- **weapon_type**: Tipos de armas disponibles 
+- **element**: Elementos de los operadores 
+- **operator_class**: Clases de operadores 
+- **rarity**: Niveles de rareza 
+- **gear_type**: Tipos de equipamiento 
 - **gear_set**: Conjuntos de equipamiento con bonificaciones
 
 #### Tablas Principales
