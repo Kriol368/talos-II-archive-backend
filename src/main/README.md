@@ -11,6 +11,8 @@ Aplicación backend para Talos-II Archive, un sistema de gestión de contenido p
 
 ## Base de Datos
 
+![Diagrama de Base de Datos](resources/static/images/database.png)
+
 ### Descripción de Tablas
 
 #### Tablas de Referencia
