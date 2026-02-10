@@ -1,7 +1,7 @@
 # Talos-II Archive - Backend
 
 ## Descripción General
-Aplicación backend para Talos-II Archive, un sistema de gestión de contenido para videojuegos. Incluye panel administrativo web para gestionar operadores, armas y equipamiento, además de API REST para consultas.
+Aplicación backend para Talos-II Archive, un sistema de gestión de contenido para el videojuego Arknights Endfield. Incluye panel administrativo web para gestionar operadores, armas y equipamiento, además de API REST para consultas.
 
 ## Requisitos para Funcionamiento
 - **Java 17 o superior**
@@ -14,11 +14,11 @@ Aplicación backend para Talos-II Archive, un sistema de gestión de contenido p
 ### Descripción de Tablas
 
 #### Tablas de Referencia
-- **weapon_type**: Tipos de armas disponibles 
-- **element**: Elementos de los operadores 
-- **operator_class**: Clases de operadores 
-- **rarity**: Niveles de rareza 
-- **gear_type**: Tipos de equipamiento 
+- **weapon_type**: Tipos de armas disponibles
+- **element**: Elementos de los operadores
+- **operator_class**: Clases de operadores
+- **rarity**: Niveles de rareza
+- **gear_type**: Tipos de equipamiento
 - **gear_set**: Conjuntos de equipamiento con bonificaciones
 
 #### Tablas Principales
@@ -50,6 +50,29 @@ mysql -h nuevo_servidor -u usuario -p talosii_archive < backup.sql
 ```
 
 4. **Actualizar credenciales** en `src/main/resources/application.properties`
+
+## Configuración de Gradle
+
+### Añadir Dependencias al build.gradle.kts
+
+Asegúrate de incluir las siguientes dependencias en tu archivo `build.gradle.kts`:
+
+```kotlin
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("org.springframework.boot:spring-boot-starter-webmvc")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("tools.jackson.module:jackson-module-kotlin")
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("mysql:mysql-connector-java:8.0.33")
+}
+```
 
 ## Cómo Ejecutar la Aplicación
 
@@ -114,10 +137,10 @@ curl http://localhost:8080/endfield/blueprints
 Cada equipo debe tener:
 - 4 operadores únicos
 - Cada operador equipado con:
-    - 1 arma compatible
-    - 1 armadura
-    - 1 guantes
-    - 2 kits diferentes
+  - 1 arma compatible
+  - 1 armadura
+  - 1 guantes
+  - 2 kits diferentes
 - Se calculan automáticamente las bonificaciones de set (activadas con 3+ piezas del mismo set)
 
 ## Notas Importantes
